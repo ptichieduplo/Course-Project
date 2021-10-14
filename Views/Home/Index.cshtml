@@ -1,0 +1,25 @@
+﻿@using WebApplication1.Models;
+@model IQueryable<WebApplication1.Models.Task>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <a asp-controller="Home" asp-action="TasksEdit">New task</a>
+</div>
+
+<div class="text-center">
+    @foreach(WebApplication1.Models.Task entity in Model)
+            {
+                <div>
+                    @entity.Name
+                    |
+                    <a asp-controller="Home" asp-action="TasksEdit" asp-route-id="@entity.Id">Edit</a>
+                    |
+                    <form method="post" asp-controller="Home" asp-action="TaskDelete">
+                        <input type="hidden" value="@entity.Id" name="Id"/>
+                        <input type="submit" value="remove"/>
+                    </form>
+                </div>
+            }
+</div>
