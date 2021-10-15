@@ -20,6 +20,8 @@
                         <input type="hidden" value="@entity.Id" name="Id"/>
                         <input type="submit" value="remove"/>
                     </form>
+                    |
+                    <a asp-controller="Home" asp-action="TaskView" asp-route-id="@entity.Id">View</a>
                 </div>
             }
 </div>

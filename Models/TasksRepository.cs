@@ -24,6 +24,11 @@ namespace WebApplication1.Models
             return context.tasks.Single(x => x.Id == id);
         }
 
+        public IQueryable<Task> GetTasksByAuthor(string author)
+        {
+            return context.tasks.OrderBy(x => x.Author == author);
+        }
+
         public int SaveTask(Task entity)
         {
             if (entity.Id == default)

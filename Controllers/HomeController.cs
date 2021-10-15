@@ -46,9 +46,16 @@ namespace WebApplication1.Controllers
             return RedirectToAction("Index");
         }
 
+        public IActionResult TaskView(int id)
+        {
+            var model = tasksRepository.GetTasksById(id);
+            return View(model);
+        }
+
         public IActionResult Privacy()
         {
-            return View();
+            var model = tasksRepository.GetTasks();
+            return View(model);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

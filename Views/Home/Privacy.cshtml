@@ -1,6 +1,25 @@
-﻿@{
+﻿@using WebApplication1.Models;
+@model IQueryable<WebApplication1.Models.Task>
+@{
     ViewData["Title"] = "Privacy Policy";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<div class="text-center">
+    @foreach(WebApplication1.Models.Task entity in Model)
+            { if(entity.Author == User.Identity.Name)
+                {
+                    <div>
+                        @entity.Name
+                        |
+                        <a asp-controller="Home" asp-action="TasksEdit" asp-route-id="@entity.Id">Edit</a>
+                        |
+                        <form method="post" asp-controller="Home" asp-action="TaskDelete">
+                            <input type="hidden" value="@entity.Id" name="Id" />
+                            <input type="submit" value="remove" />
+                        </form>
+                        |
+                        <a asp-controller="Home" asp-action="TaskView" asp-route-id="@entity.Id">View</a>
+                    </div>
+                }
+            }
+</div>

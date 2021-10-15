@@ -17,6 +17,9 @@
                 <input asp-for="Theme" />
                 <span asp-validation-for="Theme"></span>
             </div>
+            <div>
+                <input type="hidden" asp-for="Author" value=@User.Identity.Name/>
+            </div>
             <input type="submit" value="Confirm"/>
         </form>
     </div>
