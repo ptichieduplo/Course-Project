@@ -1,6 +1,9 @@
-﻿@model WebApplication1.Models.Task 
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@model WebApplication1.Models.Task
 
-<div class="text-center">
+<div class="container-fluid">
     <h1>ViewTask</h1>
     <ul class="list-group list-group-horizontal">
         <li class="list-group-item">Tasks name:</li>
@@ -10,4 +13,25 @@
         <li class="list-group-item">Tasks theme:</li>
         <li class="list-group-item">@Model.Theme</li>
     </ul>
+    <ul class="list-group list-group-horizontal">
+        <li class="list-group-item">Tasks tags:</li>
+        <li class="list-group-item">@Model.Tags</li>
+    </ul>
+    <ul class="list-group list-group-horizontal">
+        <li class="list-group-item">Tasks estimated answers:</li>
+        <li class="list-group-item">@Model.EstimatedAnswer1, @Model.EstimatedAnswer2, @Model.EstimatedAnswer3</li>
+    </ul>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <div class="form-group">
+            <label asp-for="UsersAnswer">Your answer:</label>
+            <input asp-for="UsersAnswer" />
+            <input type="submit" value="Confirm"/>
+        </div>
+    }
+    else
+    {
+        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
+        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+    }
 </div>

@@ -37,6 +37,7 @@ namespace WebApplication1
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
+            services.AddSingleton<ICloudStorage, GoogleCloudStorage>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

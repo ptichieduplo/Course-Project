@@ -39,7 +39,7 @@ namespace WebApplication1.Controllers
             }
             return View(model);
         }
-        [HttpPost]
+
         public IActionResult TaskDelete(int id)
         {
             tasksRepository.RemoveTask(new Models.Task { Id = id });
