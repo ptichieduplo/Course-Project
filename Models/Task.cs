@@ -41,5 +41,7 @@ namespace WebApplication1.Models
         public virtual IFormFile ImageFile { get; set; }
 
         public string ImageStorageName { get; set; }
+
+        public string ComplitedAuthors { get; set; }
     }
 }

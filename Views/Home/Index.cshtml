@@ -4,40 +4,18 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="container">
-    <div class="row">
-        <div class="col-6">
+<div class="container" style="background-color: #dec9ad; border-start-end-radius: 20px; border-start-start-radius: 20px; border-end-end-radius: 20px; border-end-start-radius: 20px; ">
+    <div class="row justify-content-center">
             @foreach (WebApplication1.Models.Task tasks in Model)
             {
-                <div class="card" style="width: 18rem;">
-                    <img src="../Data/img/pi.jpg" alt="">
+                <div class="card text-center" style="width: 18rem; margin: 15px; border-radius: 20px; border:hidden">
+                    <img src="https://avatars.mds.yandex.net/i?id=2a00000179fadd8a3b492e1674dbf1a662a2-2352855-images-thumbs&n=13" alt="" style="border-start-end-radius: 20px; border-start-start-radius: 20px">
                     <div class="card-body">
                         <h5 class="card-title">@tasks.Name</h5>
                         <p class="card-text">@tasks.Theme</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <a class="btn btn-primary" asp-controller="Home" asp-action="TaskView" asp-route-id="@tasks.Id" style="color: #000000; background-color: #DEAC48; border: hidden">View</a>
                     </div>
                 </div>
             }
-        </div>
-        <div class="col">
-            <h1>Sample text</h1>
-            <h2>There must be a lot of words about this wonderful site!</h2>
-        </div>
     </div>
 </div>
-
-    <div class="text-center">
-        <a asp-controller="Home" asp-action="TasksEdit">New task</a>
-    </div>
-
-    <div class="text-center">
-        @foreach (WebApplication1.Models.Task entity in Model)
-        {
-            <div class="text-center list-group list-group-horizontal">
-                @entity.Name
-                <a class="btn btn-primary" asp-controller="Home" asp-action="TasksEdit" asp-route-id="@entity.Id" role="button">Edit</a>
-                <a class="btn btn-primary" asp-controller="Home" asp-action="TaskDelete" asp-route-id="@entity.Id">Remove</a>
-                <a class="btn btn-primary" asp-controller="Home" asp-action="TaskView" asp-route-id="@entity.Id">View</a>
-            </div>
-        }
-    </div>

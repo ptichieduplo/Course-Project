@@ -1,25 +1,40 @@
 ﻿@using WebApplication1.Models;
+
 @model IQueryable<WebApplication1.Models.Task>
 @{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = "My Tasks";
 }
 
-<div class="text-center">
-    @foreach(WebApplication1.Models.Task entity in Model)
-            { if(entity.Author == User.Identity.Name)
+<div class="container" style="background-color: #D9E9F3; border-start-end-radius: 20px; border-start-start-radius: 20px; border-end-end-radius: 20px; border-end-start-radius: 20px; ">
+    <h1>On this page you can manage your tasks: delete, create and edit!</h1>
+    <div class="row justify-content-center">
+        @foreach (WebApplication1.Models.Task tasks in Model)
+        {
+            if(tasks.Author == User.Identity.Name)
                 {
-                    <div>
-                        @entity.Name
-                        |
-                        <a asp-controller="Home" asp-action="TasksEdit" asp-route-id="@entity.Id">Edit</a>
-                        |
-                        <form method="post" asp-controller="Home" asp-action="TaskDelete">
-                            <input type="hidden" value="@entity.Id" name="Id" />
-                            <input type="submit" value="remove" />
-                        </form>
-                        |
-                        <a asp-controller="Home" asp-action="TaskView" asp-route-id="@entity.Id">View</a>
+                    <div class="card text-center" style="width: 18rem; margin: 15px; border-radius: 20px; border:hidden">
+                        <img src="https://pm1.narvii.com/7235/c8303cdd1a08957cb7dd56cb8d8acfc80a8e44c2r1-750-1000v2_hq.jpg" alt="" style="border-start-end-radius: 20px; border-start-start-radius: 20px">
+                        <div class="card-body">
+                            <h5 class="card-title">@tasks.Name</h5>
+                            <p class="card-text">@tasks.Theme</p>
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <a class="btn btn-primary" asp-controller="Home" asp-action="TaskView" asp-route-id="@tasks.Id" style="color: #000000; background-color: #C062CC; border: hidden">View</a>
+                                <a class="btn btn-primary" asp-controller="Home" asp-action="TaskDelete" asp-route-id="@tasks.Id" style="color: #000000; background-color: #C062CC; border: hidden">Remove</a>
+                                <a class="btn btn-primary" asp-controller="Home" asp-action="TasksEdit" asp-route-id="@tasks.Id" style="color: #000000; background-color: #C062CC; border: hidden">Edit</a>
+                            </div>
+                        </div>
                     </div>
-                }
+                }   
+        }
+        @if(User.Identity.Name != null)
+            {
+            <div class="card justify-content-center" style="width: 18rem; margin: 15px; border-radius: 20px; border: solid; background-color: #D9E9F3 ">
+                <a class="btn btn-primary" name="newLink" asp-controller="Home" asp-action="TasksEdit" style="opacity: 1; background-color: #D9E9F3; border: hidden; width: 70px; height: 70px; margin-left: 39%; border-radius: 25px; border-color: #696969 "><p style="opacity: 1; color: #000000">New</p></a>
+            </div>
             }
+        else
+        {
+            <h2>To view your tasks please log in!</h2>
+        }
+    </div>
 </div>

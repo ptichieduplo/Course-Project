@@ -52,6 +52,19 @@ namespace WebApplication1.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        public IActionResult SolveTask(string? answer, Models.Task task)
+        {
+            if (answer == null) return RedirectToAction("Index");
+            else if (answer == task.CorrectAnswer)
+            {
+                task.ComplitedAuthors += User.Identity.Name;
+                return View();
+            }
+            else
+                return View();
+        }
+
         public IActionResult Privacy()
         {
             var model = tasksRepository.GetTasks();

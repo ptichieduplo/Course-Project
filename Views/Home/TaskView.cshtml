@@ -23,15 +23,20 @@
     </ul>
     @if (SignInManager.IsSignedIn(User))
     {
-        <div class="form-group">
+        <form asp-controller="Home" asp-action="SolveTask" class="form-group">
             <label asp-for="UsersAnswer">Your answer:</label>
             <input asp-for="UsersAnswer" />
+            <input type="hidden" value="UsersAnswer" />
+            <input type="hidden" value="Model" />
             <input type="submit" value="Confirm"/>
-        </div>
+        </form>
     }
     else
     {
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+<div class="form-group">
+    <label asp-for="UsersAnswer">Your answer:</label>
+    <input asp-for="UsersAnswer" />
+    <input type="submit" value="Confirm" disabled/>
+</div>
     }
 </div>
