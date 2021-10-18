@@ -3,40 +3,40 @@
 @inject UserManager<IdentityUser> UserManager
 @model WebApplication1.Models.Task
 
-<div class="container-fluid">
+<div class="container" style="background-color: #dec9ad; border-start-end-radius: 20px; border-start-start-radius: 20px; border-end-end-radius: 20px; border-end-start-radius: 20px; ">
     <h1>ViewTask</h1>
     <ul class="list-group list-group-horizontal">
-        <li class="list-group-item">Tasks name:</li>
-        <li class="list-group-item">@Model.Name</li>
+        <li class="list-group-item" style="border-start-end-radius: 20px; border-start-start-radius: 20px; border-end-end-radius: 20px; border-end-start-radius: 20px; ">Tasks name:</li>
+        <li class="list-group-item" style="border-start-end-radius: 20px; border-start-start-radius: 20px; border-end-end-radius: 20px; border-end-start-radius: 20px; ">@Model.Name</li>
     </ul>
     <ul class="list-group list-group-horizontal">
-        <li class="list-group-item">Tasks theme:</li>
-        <li class="list-group-item">@Model.Theme</li>
+        <li class="list-group-item" style="border-start-end-radius: 20px; border-start-start-radius: 20px; border-end-end-radius: 20px; border-end-start-radius: 20px; ">Tasks theme:</li>
+        <li class="list-group-item" style="border-start-end-radius: 20px; border-start-start-radius: 20px; border-end-end-radius: 20px; border-end-start-radius: 20px; ">@Model.Theme</li>
     </ul>
     <ul class="list-group list-group-horizontal">
-        <li class="list-group-item">Tasks tags:</li>
-        <li class="list-group-item">@Model.Tags</li>
+        <li class="list-group-item" style="border-start-end-radius: 20px; border-start-start-radius: 20px; border-end-end-radius: 20px; border-end-start-radius: 20px; ">Tasks tags:</li>
+        <li class="list-group-item" style="border-start-end-radius: 20px; border-start-start-radius: 20px; border-end-end-radius: 20px; border-end-start-radius: 20px; ">@Model.Tags</li>
     </ul>
     <ul class="list-group list-group-horizontal">
-        <li class="list-group-item">Tasks estimated answers:</li>
-        <li class="list-group-item">@Model.EstimatedAnswer1, @Model.EstimatedAnswer2, @Model.EstimatedAnswer3</li>
+        <li class="list-group-item" style="border-start-end-radius: 20px; border-start-start-radius: 20px; border-end-end-radius: 20px; border-end-start-radius: 20px; ">Tasks estimated answers:</li>
+        <li class="list-group-item" style="border-start-end-radius: 20px; border-start-start-radius: 20px; border-end-end-radius: 20px; border-end-start-radius: 20px; ">@Model.EstimatedAnswer1, @Model.EstimatedAnswer2, @Model.EstimatedAnswer3</li>
     </ul>
     @if (SignInManager.IsSignedIn(User))
     {
         <form asp-controller="Home" asp-action="SolveTask" class="form-group">
-            <label asp-for="UsersAnswer">Your answer:</label>
-            <input asp-for="UsersAnswer" />
-            <input type="hidden" value="UsersAnswer" />
-            <input type="hidden" value="Model" />
-            <input type="submit" value="Confirm"/>
+            <input type="hidden" value="@Model.Id" name="Id" />
+            <input type="hidden" value="@Model.Theme" name="Theme" />
+            <label style="border-start-end-radius: 20px; border-start-start-radius: 20px; border-end-end-radius: 20px; border-end-start-radius: 20px; ">Your answer:</label>
+            <input type="text" name="UsersAnswer"  style="border-start-end-radius: 20px; border-start-start-radius: 20px; border-end-end-radius: 20px; border-end-start-radius: 20px; "/>
+            <input class="btn btn-primary" type="submit" value="Confirm" />
         </form>
     }
     else
     {
-<div class="form-group">
-    <label asp-for="UsersAnswer">Your answer:</label>
-    <input asp-for="UsersAnswer" />
-    <input type="submit" value="Confirm" disabled/>
-</div>
+        <div class="form-group">
+            <label asp-for="UsersAnswer">Your answer:</label>
+            <input asp-for="UsersAnswer" />
+            <input type="submit" value="Confirm" disabled />
+        </div>
     }
 </div>

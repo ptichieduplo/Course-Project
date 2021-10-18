@@ -16,6 +16,7 @@ namespace WebApplication1.Models
         [Required]
         public string Name { get; set; }
 
+        [Required]
         public string Theme { get; set; }
 
         public bool IsDone { get; set; }
@@ -32,6 +33,7 @@ namespace WebApplication1.Models
 
         public string Tags { get; set; }
 
+        [Required]
         public string CorrectAnswer { get; set; }
 
         public string UsersAnswer { get; set; }

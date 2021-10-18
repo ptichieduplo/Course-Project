@@ -53,16 +53,16 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPost]
-        public IActionResult SolveTask(string? answer, Models.Task task)
+        public string SolveTask(Models.Task task)
         {
-            if (answer == null) return RedirectToAction("Index");
-            else if (answer == task.CorrectAnswer)
+            if (task.UsersAnswer == null) return "Invalid answer!";
+            else if (task.UsersAnswer == tasksRepository.GetTasksById(task.Id).CorrectAnswer)
             {
                 task.ComplitedAuthors += User.Identity.Name;
-                return View();
+                return "Correct!";
             }
             else
-                return View();
+                return $"Incorrect answer: {task.UsersAnswer}!";
         }
 
         public IActionResult Privacy()

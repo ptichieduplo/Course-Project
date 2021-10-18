@@ -1,6 +1,6 @@
 ﻿@model WebApplication1.Models.Task
 
-<div class="text-center">
+<div class="container" style="background-color: #D9E9F3; border-start-end-radius: 20px; border-start-start-radius: 20px; border-end-end-radius: 20px; border-end-start-radius: 20px; ">
     <h1>Edit task</h1>
     <div>
         <form asp-controller="Home" asp-action="TasksEdit" method="post" enctype="multipart/form-data">
@@ -8,35 +8,35 @@
             <div asp-validation-summary="All"></div>
             <div>
                 <label asp-for="Name"></label>
-                <input asp-for="Name" />
+                <input asp-for="Name" style="border-start-end-radius: 20px; border-start-start-radius: 20px; border-end-end-radius: 20px; border-end-start-radius: 20px; "/>
                 <span asp-validation-for="Name"></span>
             </div>
             <div>
                 <label asp-for="Theme">What to do</label>
-                <input asp-for="Theme" />
+                <input asp-for="Theme" style="border-start-end-radius: 20px; border-start-start-radius: 20px; border-end-end-radius: 20px; border-end-start-radius: 20px; "/>
                 <span asp-validation-for="Theme"></span>
             </div>
             <div>
                 <label asp-for="Tags"></label>
-                <input asp-for="Tags" />
+                <input asp-for="Tags"  style="border-start-end-radius: 20px; border-start-start-radius: 20px; border-end-end-radius: 20px; border-end-start-radius: 20px; "/>
                 <span asp-validation-for="Tags"></span>
             </div>
             <div>
                 <label asp-for="CorrectAnswer"></label>
-                <input asp-for="CorrectAnswer" />
+                <input asp-for="CorrectAnswer"  style="border-start-end-radius: 20px; border-start-start-radius: 20px; border-end-end-radius: 20px; border-end-start-radius: 20px; "/>
             </div>
             <div class="form-group">
                 <label asp-for="EstimatedAnswer1"></label>
-                <input asp-for="EstimatedAnswer1" />
+                <input asp-for="EstimatedAnswer1"  style="border-start-end-radius: 20px; border-start-start-radius: 20px; border-end-end-radius: 20px; border-end-start-radius: 20px; "/>
                 <label asp-for="EstimatedAnswer2"></label>
-                <input asp-for="EstimatedAnswer2" />
+                <input asp-for="EstimatedAnswer2"  style="border-start-end-radius: 20px; border-start-start-radius: 20px; border-end-end-radius: 20px; border-end-start-radius: 20px; "/>
                 <label asp-for="EstimatedAnswer3"></label>
-                <input asp-for="EstimatedAnswer3" />
+                <input asp-for="EstimatedAnswer3"  style="border-start-end-radius: 20px; border-start-start-radius: 20px; border-end-end-radius: 20px; border-end-start-radius: 20px; "/>
             </div>
             <div>
-                <input type="hidden" asp-for="Author" value=@User.Identity.Name/>
+                <input type="hidden" asp-for="Author" value=@User.Identity.Name />
             </div>
-            <input type="submit" value="Confirm"/>
+            <input class="btn btn-primary" type="submit" value="Confirm" />
         </form>
     </div>
 </div>
