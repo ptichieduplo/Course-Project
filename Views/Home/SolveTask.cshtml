@@ -1,0 +1,14 @@
+﻿@model WebApplication1.Models.Task
+
+@if (ViewBag.message == "1")
+{
+                <h1 class="text-center">COrrect</h1>
+}
+else if (ViewBag.message == "0")
+{
+                <h1 class="text-center">no answer is typed?</h1>
+}
+else
+            {
+                <h1 class="text-center">incorrect</h1>
+            }
